@@ -8,16 +8,24 @@ export const routes: Routes = [
       //   (c) => c.DashboardPageComponent
       // ),
       import('./gifs/pages/dashboard-page/dashboard-page.component'),
-  },
-  {
-    path: 'trending',
-    loadComponent: () =>
-      import('./gifs/pages/trending-page/trending-page.component'),
-  },
-  {
-    path: 'search',
-    loadComponent: () =>
-      import('./gifs/pages/search-page/search-page.component'),
+
+    children: [
+      {
+        path: 'trending',
+        loadComponent: () =>
+          import('./gifs/pages/trending-page/trending-page.component'),
+      },
+      {
+        path: 'search',
+        loadComponent: () =>
+          import('./gifs/pages/search-page/search-page.component'),
+      },
+      {
+        path: '**',
+        loadComponent: () =>
+          import('./gifs/pages/trending-page/trending-page.component'),
+      },
+    ],
   },
   {
     path: '**',
